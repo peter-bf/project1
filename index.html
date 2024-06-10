@@ -1,46 +1,380 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>King's Barbershop</title>
+    <title>Royal Haircuts</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" href="assets/crown_logo.png">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;900&display=swap">
+    <style>
+        body {
+            font-family: "Barlow", serif;
+        }
+
+        .navbar-brand-text {
+            font-weight: 500; /* Barlow Black */
+        }
+        section {
+            padding: 100px 0 60px; /* Increased padding at the top to avoid cropping */
+        }
+
+        .section-title {
+            margin-bottom: 30px;
+            font-weight: 900;
+        }
+
+        .buffer {
+            height: 100;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .recommended-card {
+            border: 2px solid #ffff5c; /* Red border to make it stand out */
+            padding: 10px;
+            background-color: #ffff8a; /* Light background to highlight the card */
+        }
+
+        .recommended-card .card-title {
+            font-weight: 500; /* Bold title */
+        }
+
+        .recommended-card .card-text {
+            font-weight: 100; /* Slightly bolder text */
+        }
+
+        .recommended-card .card-stars {
+            color: gold; /* Gold stars */
+        }
+		
+		.info-icons {
+			display: flex;
+			margin-bottom: 39px;
+		}
+
+        .recommended-card .card-stars {
+            color: gold; /* Gold stars */
+        }
+
+        .info-icons {
+            display: flex;
+            align-items: center;
+            margin-bottom: 70px;
+        }
+
+        .info-icons img {
+            margin-right: 10px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .service-item img {
+            margin-right: 15px;
+        }
+
+        .service-item h5 {
+            margin: 0;
+            font-weight: 900;
+        }
+
+        .service-item p {
+            margin: 0;
+        }
+
+		.home-section {
+			background: url('assets/barbershop.png') no-repeat center center;
+			background-size: cover;
+			color: white;
+			text-align: center;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+		}
+
+		.home-content {
+			z-index: 2;
+		}
+
+		.home-section::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 1;
+		}
+
+		.home-buttons {
+			display: flex;
+			gap: 15px;
+			margin-top: 20px;
+		}
+
+		.home-buttons a {
+			padding: 10px 20px;
+			font-weight: bold;
+			border: none;
+			text-decoration: none;
+		}
+
+		.btn-book {
+			background-color: white;
+			color: black;
+		}
+
+		.btn-services {
+			background-color: #ffff5c;
+			color: black;
+		}
+    </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="50">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="assets/crown_logo.png" alt="Logo" width="50" height="50">
-            </a>
+
+
+<body data-bs-spy="scroll" data-bs-target="#navbarNavAltMarkup" tabindex="0">
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="assets/crown_logo.png" alt="Logo" width="50" height="50"> <span class="navbar-brand-text ms-2">Royal Haircuts</a>
+
             <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <!-- Navbar content -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#info">INFO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">OUR SERVICES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#booking">BOOK AN APPOINTMENT</a>
-                    </li>
-                </ul>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link active" aria-current="page" href="#home">HOME</a>
+                    <a class="nav-link" href="#info">INFO</a>
+                    <a class="nav-link" href="#services">OUR SERVICES</a>
+                    <a class="nav-link" href="#professionals">PROFESSIONALS</a>
+                    <a class="button btn btn-dark ms-2" href="booking.html">BOOK AN APPOINTMENT</a>
+                </div>
             </div>
         </div>
     </nav>
-    <!-- Example sections -->
-    <section id="home" style="height: 500px;">Home Section</section>
-    <section id="info" style="height: 500px;">Info Section</section>
-    <section id="services" style="height: 500px;">Services Section</section>
-    <section id="booking" style="height: 500px;">Booking Section</section>
+
+	<div class="buffer"></div>
+	<div class="buffer"></div>
+
+    <!-- Main Section -->
+<!-- Main Section -->
+<section id="home" class="home-section">
+    <div class="home-content">
+        <h1 class="section-title">ROYAL HAIRCUTS</h1>
+        <div class="home-buttons">
+            <a href="booking.html" class="btn btn-book">BOOK AN APPOINTMENT</a>
+            <a href="#services" class="btn btn-services">OUR SERVICES</a>
+        </div>
+    </div>
+</section>
+
+    <!-- Info Section -->
+    <section id="info" class="container">
+        <h1 class="section-title">Information</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="assets/map.png" alt="Map" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <div class="info-icons">
+                    <img src="assets/address.svg" alt="Address Icon" width="27" height="27">
+                    <div>
+                        <strong>ADDRESS</strong><br>
+                        180 Vanguard Drive, Orléans, K4A 0T8
+                    </div>
+                </div>
+                <div class="info-icons">
+                    <img src="assets/phone.png" alt="Phone Icon" width="15" height="15">
+                    <div>
+                        <strong>PHONE</strong><br>
+                        +1 (613) 841-4222
+                    </div>
+                </div>
+                <div class="info-icons">
+                    <img src="assets/time.png" alt="Hours Icon" width="21" height="21">
+                    <div>
+                        <strong>HOURS</strong><br>
+                        Monday - Saturday: 9AM - 5PM
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+ <!-- Services Section -->
+<section id="services" class="container">
+    <h1 class="section-title">Our Services</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="service-item">
+                <img src="assets/adult.png" alt="Adult Haircut" width="50" height="50">
+                <div>
+                    <h5>ADULT HAIRCUT</h5>
+                    <p>$35 CAD</p>
+                    <p class="service-description">A classic haircut tailored to your style.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="assets/kids.png" alt="Kids Haircut" width="50" height="50">
+                <div>
+                    <h5>KIDS HAIRCUT</h5>
+                    <p>$25 CAD</p>
+                    <p class="service-description">Gentle and fun haircut for kids.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="assets/scalp.png" alt="Scalp Moisturizing" width="50" height="50">
+                <div>
+                    <h5>SCALP MOISTURIZING</h5>
+                    <p>$10 CAD</p>
+                    <p class="service-description">Hydrating treatment for a healthy scalp.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="service-item">
+                <img src="assets/trim.png" alt="Beard Trim" width="50" height="50">
+                <div>
+                    <h5>BEARD TRIM</h5>
+                    <p>$30 CAD</p>
+                    <p class="service-description">Professional trim to keep your beard in shape.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="assets/groom.png" alt="Beard Grooming" width="50" height="50">
+                <div>
+                    <h5>BEARD GROOMING</h5>
+                    <p>$25 CAD</p>
+                    <p class="service-description">Full grooming for a polished beard.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="assets/shave.png" alt="Neck Shave" width="50" height="50">
+                <div>
+                    <h5>NECK SHAVE</h5>
+                    <p>$20 CAD</p>
+                    <p class="service-description">Clean and precise neck shave.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Professionals Section -->
+    <section id="professionals" class="container text-center">
+        <h1 class="section-title">Meet Our Professionals</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="assets/barber2.jpg" class="card-img-top" alt="Professional 1">
+                    <div class="card-body">
+                        <h5 class="card-title">John Doe</h5>
+                        <p class="card-text">⭐⭐⭐⭐</p>
+                        <p class="card-text">Reviewed by 117 clients</p>
+                        <p class="card-text">John is an experienced barber with over 10 years in the industry. He specializes in modern cuts and styles.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card recommended-card">
+                    <img src="assets/barber1.jpeg" class="card-img-top" alt="Professional 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Alex Johnson</h5>
+                        <p class="card-text card-stars">⭐⭐⭐⭐⭐</p>
+                        <p class="card-text">Reviewed by 325 clients</p>
+                        <p class="card-text">Alex is known for his innovative techniques and friendly demeanor. He specializes in classic and trendy cuts.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="assets/barber3.png" class="card-img-top" alt="Professional 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Jane Smith</h5>
+                        <p class="card-text">⭐⭐⭐⭐⭐</p>
+                        <p class="card-text">Reviewed by 142 clients</p>
+                        <p class="card-text">Jane has a keen eye for detail and a passion for creating unique looks. She has been with us for 5 years.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-light text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Royal Haircuts</h5>
+                    <p>
+                        Welcome to Royal Haircuts, where we offer the best grooming services with top-notch professionals.
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Quick Links</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#home" class="text-dark">Home</a>
+                        </li>
+                        <li>
+                            <a href="#info" class="text-dark">Info</a>
+                        </li>
+                        <li>
+                            <a href="#services" class="text-dark">Our Services</a>
+                        </li>
+                        <li>
+                            <a href="#professionals" class="text-dark">Professionals</a>
+                        </li>
+                        <li>
+                            <a href="booking.html" class="text-dark">Book an Appointment</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Contact Us</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <p class="text-dark mb-1"><strong>Address:</strong> 180 Vanguard Drive, Orléans, K4A 0T8</p>
+                        </li>
+                        <li>
+                            <p class="text-dark mb-1"><strong>Phone:</strong> +1 (613) 841-4222</p>
+                        </li>
+                        <li>
+                            <p class="text-dark mb-1"><strong>Hours:</strong> Monday - Saturday: 9AM - 5PM</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            &copy; 2024 Royal Haircuts. All Rights Reserved.
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
+
 </html>
